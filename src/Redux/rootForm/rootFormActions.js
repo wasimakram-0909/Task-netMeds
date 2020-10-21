@@ -1,0 +1,28 @@
+
+export const createTemplate = (obj) => {
+    return {
+        type: "CREATE_TEMPLATE",
+        payload: obj
+    }
+}
+
+export const createRecord = (obj) => {
+    return {
+        type: "CREATE_RECORDS",
+        payload: obj
+    }
+}
+
+export const updateRecords = (obj) => {
+    return {
+        type: "UPDATE_RECORDS",
+        payload: obj
+    }
+}
+
+export const deleteRecords = (obj) => {
+    return {
+        type: "DELETE_RECORDS",
+        payload: obj
+    }
+}
