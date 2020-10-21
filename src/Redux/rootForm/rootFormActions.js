@@ -6,6 +6,13 @@ export const createTemplate = (obj) => {
     }
 }
 
+export const updateTemplate = (obj) => {
+    return {
+        type: "UPDATE_TEMPLATE",
+        payload: obj
+    }
+}
+
 export const createRecord = (obj) => {
     return {
         type: "CREATE_RECORDS",

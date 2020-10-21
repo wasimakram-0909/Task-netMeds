@@ -1,1 +1,1 @@
-export { createRecord, createTemplate, updateRecords, deleteRecords } from './rootForm/rootFormActions'
+export { createRecord, createTemplate, updateRecords, deleteRecords, updateTemplate } from './rootForm/rootFormActions'

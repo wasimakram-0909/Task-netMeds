@@ -14,6 +14,20 @@ const rootFormReducer = (state = initialState, action) => {
             }
             state = list;
             return state;
+        case "UPDATE_TEMPLATE":
+            let temp = state.forms;
+            var finalArr = [];
+            action.payload.formFields.forEach((element, index) => {
+                let finalObj = {};
+                finalObj['type'] = element['type'];
+                finalObj['displayLabel'] = element['displayLabel'];
+                finalObj['label'] = element['displayLabel'] + '_' + index;
+                finalObj['index'] = index;
+                finalArr.push(finalObj);
+            })
+            temp[action.payload.formName]['metaData'] = finalArr;
+            state.forms[action.payload.formName]['metaData'] = temp[action.payload.formName]['metaData'];
+            return state;
         case "CREATE_RECORDS":
             let tempList = state;
             tempList.records.push(action.payload)
