@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { deleteRecords } from '../../../Redux/rootForm/rootFormActions';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Records() {
     const listCss = { cursor: 'pointer', listStyle: 'none', margin: '3px', padding: '10px', border: '1px dashed #ddd' }
@@ -72,6 +74,20 @@ function Records() {
         setFormList(tempArr);
         setShowRecord(false);
         setFormRender([]);
+        showToast('Successfully Deleted')
+
+    }
+
+    const showToast=(args)=> {
+        toast.success(args, {
+            position: "top-right",
+            autoClose: 4000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: false,
+            progress: undefined,
+        });
     }
 
     const EmailTag=(props)  =>{
@@ -96,6 +112,17 @@ function Records() {
     return (
         <>
             <div>
+                <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
                 <Row className="m-0">
                     <Col className=" col-md-3 section left-section py-2 px-4" >
                         <h6>Records List</h6>

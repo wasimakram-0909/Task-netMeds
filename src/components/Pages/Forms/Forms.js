@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react'
 import { Button, Col, Form, ListGroup, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
 import { createRecord, updateRecords } from '../../../Redux/rootForm/rootFormActions';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Forms(props) {
     const [formList, setFormList] = useState([]);
@@ -67,6 +69,7 @@ function Forms(props) {
         setPrevId('');
         setFormRender([]);
         setShowButton(false);
+        showToast('Succesfully Updated');
     }
 
     const getValues=(event, index)=> {
@@ -119,6 +122,20 @@ function Forms(props) {
         }
         setFormRender([]);
         setShowButton(false);
+        showToast('Succesfully Created');
+
+    }
+
+    const showToast=(args)=> {
+        toast.success(args, {
+            position: "top-right",
+            autoClose: 4000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: false,
+            progress: undefined,
+        });
     }
 
     const NumberTag=(props)=> {
@@ -134,6 +151,17 @@ function Forms(props) {
     return (
         <>
             <div>
+                <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
                 <Row className="m-0">
                     <Col  className=" col-md-3 section left-section py-2 px-4" >
                         <h6 > List Forms</h6>

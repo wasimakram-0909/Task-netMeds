@@ -5,6 +5,8 @@ import { createTemplate, updateTemplate } from '../../../Redux/rootForm/rootForm
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle, faEdit, faTrashAlt } from '@fortawesome/free-regular-svg-icons';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Home() {
     const listCss = { cursor: 'pointer', listStyle: 'none', margin: '3px', padding: '10px', border: '1px dashed #ddd' }
@@ -85,6 +87,19 @@ function Home() {
         setName(e.target.value);
     }
 
+    const showToast = (args)=> {
+        toast.success(args, {
+            position: "top-right",
+            autoClose: 4000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: false,
+            progress: undefined,
+        });
+    }
+
+
     const saveForm =() => {
         if (global && global.length) {
             setShowAlert(false);
@@ -99,6 +114,7 @@ function Home() {
             setName('');
             setFormFields([]);
             setEnableControls(false);
+            showToast('Created Successfully');
         } else {
             setShowAlert(true);
         }
@@ -113,6 +129,7 @@ function Home() {
             setName('');
             setFormFields([]);
             setEnableControls(false);
+            showToast(`${name} Updated Succesfully`);
         }
     }
 
@@ -239,6 +256,18 @@ function Home() {
         <>
             <div>
                 {showAlert && <ShowAlert />}
+                <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                />
+                <ToastContainer />
                 <Row className="m-0">
                     <Col  className="border-right section left-section col-md-3 py-2 px-4" >
                         <div className="d-flex justify-content-end">
